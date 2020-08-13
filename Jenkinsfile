@@ -2,6 +2,8 @@
 @Library('jenkinslibrary') _
 def mytools = new org.devops.tools()
 
+hello()
+
 pipeline {
     agent {
         node {label "master"}
