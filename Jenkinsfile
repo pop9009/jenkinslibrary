@@ -28,6 +28,7 @@ pipeline {
             steps {
                 script{
                     println("获取代码")
+                    mytools.PrintMes("获取代码", 'red')
                 }
             }
         }
@@ -38,6 +39,7 @@ pipeline {
             steps {
                 script{
                     println("应用打包")
+                    mytools.PrintMes("应用打包", 'green')
                     java = tool "JavaHome"
                     sh "${java}/bin/java -version"
 //                    println(java)
@@ -55,7 +57,8 @@ pipeline {
             steps {
                 script{
                     println("代码扫描")
-                    mytools.PrintMessage("This is my lib!")
+                    mytools.PrintMes("代码扫描", 'blue')
+                    mytools.PrintMes("This is my lib!", 'red')
                 }
             }
         }        
