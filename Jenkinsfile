@@ -50,6 +50,14 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+        stage("GradleBuild"){
+            steps{
+                script{
+                    gradleHome = tool "GRADLE"
+                    sh "${gradleHome}/bin/gradle ${buildshell}"
+                }
+            }
+        }
         stage('CodeScan') {
             options {
                 timeout(time: 30, unit: 'MINUTES') 
