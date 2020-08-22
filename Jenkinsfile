@@ -1,6 +1,7 @@
 #!groovy
 @Library('jenkinslibrary') _
 def mytools = new org.devops.tools()
+String BuildShell = "${env.BuildShell}"
 
 hello()
 
@@ -54,7 +55,7 @@ pipeline {
             steps{
                 script{
                     gradleHome = tool "GRADLE"
-                    sh "${gradleHome}/bin/gradle ${buildshell}"
+                    sh "${gradleHome}/bin/gradle ${BuildShell}"
                 }
             }
         }
