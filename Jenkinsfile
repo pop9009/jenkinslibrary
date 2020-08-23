@@ -44,7 +44,7 @@ pipeline {
                     java = tool "JavaHome"
                     sh "${java}/bin/java -version"
 //                    println(java)
-                    mvnHome =tool "m2"
+                    mvnHome = tool "m2"
 //                    println(mvnHome)
                     sh "${mvnHome}/bin/mvn --version"
                 }
@@ -56,6 +56,14 @@ pipeline {
                 script{
                     gradleHome = tool "GRADLE"
                     sh "${gradleHome}/bin/gradle ${BuildShell}"
+                }
+            }
+        }
+        stage("NpmBuild"){
+            steps{
+                script{
+                    npmHome = tool "NPM"
+                    sh "${npmHome}/bin/npm ${BuildShell}"
                 }
             }
         }
