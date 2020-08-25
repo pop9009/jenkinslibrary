@@ -1,8 +1,9 @@
 #!groovy
 @Library('jenkinslibrary') _
 def mytools = new org.devops.tools()
+def build = new org.devops.build()
 String BuildShell = "${env.BuildShell}"
-
+String BuildType = "${env.BuildType}
 hello()
 
 pipeline {
@@ -33,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+/*        stage('Build') {
             options {
                 timeout(time: 20, unit: 'MINUTES') 
             }
@@ -64,6 +65,13 @@ pipeline {
                 script{
                     npmHome = tool "NPM"
                     sh "export NODE_HOME=${npmHome} && export PATH=\$NODE_HOME/bin:\$PATH && ${npmHome}/bin/npm ${BuildShell}"
+                }
+            }
+        }*/
+        stage("Build") {
+            steps{
+                script{
+                    build.Build(buildType,buildShell)
                 }
             }
         }
