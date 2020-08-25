@@ -1,6 +1,6 @@
 package org.devops
 
-def build(buildType,buildShell){
+def Build(buildType,buildShell){
   buildTools=["mvn":"M2", "gradle":"GRADLE", "npm":"NPM"]
   buildHome = tool buildTools[buildType]
   println(buildHome地址 "${buildHome}")
