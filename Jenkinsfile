@@ -11,9 +11,9 @@ pipeline {
         node {label "master"}
     }
     parameters { string(name: 'DEPLOY_ENV', defaultValue: 'dev', description: '') }
-    tools {
+/*    tools {
         maven 'M2' 
-    }
+    }*/
     options {
         timestamps()
         timeout(time: 1, unit: "HOURS")
