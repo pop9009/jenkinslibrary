@@ -3,7 +3,7 @@
 def mytools = new org.devops.tools()
 def build = new org.devops.build()
 String BuildShell = "${env.BuildShell}"
-String BuildType = "${env.BuildType}
+String BuildType = "${env.BuildType}"
 hello()
 
 pipeline {
