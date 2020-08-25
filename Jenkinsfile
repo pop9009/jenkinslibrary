@@ -11,7 +11,7 @@ pipeline {
     }
     parameters { string(name: 'DEPLOY_ENV', defaultValue: 'dev', description: '') }
     tools {
-        maven 'm2' 
+        maven 'M2' 
     }
     options {
         timestamps()
