@@ -44,7 +44,7 @@ pipeline {
                     java = tool "JavaHome"
                     sh "${java}/bin/java -version"
 //                    println(java)
-                    mvnHome = tool M2
+                    mvnHome = tool "M2"
 //                    println(mvnHome)
                     sh "${mvnHome}/bin/mvn --version"
                 }
