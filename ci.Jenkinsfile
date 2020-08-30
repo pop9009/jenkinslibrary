@@ -6,7 +6,7 @@ String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 
 String SrcUrl = "${env.SrcUrl}"
-String BranchName = $"{env.BranchName}"
+String BranchName = "${env.BranchName}"
 
 pipeline {
     agent {
@@ -18,6 +18,19 @@ pipeline {
     }
     
     stages {
+         stage("CheckOut"){
+            steps{
+                script{
+                      println("${BranchName}")
+/*                    checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
+                                      doGenerateSubmoduleConfigurations: false, 
+                                      extensions: [], 
+                                      submoduleCfg: [], 
+                                      userRemoteConfigs: [[credentialsId: 'global-git-credential', url: "${SrcUrl}"]]])*/
+                      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'global-git-credential', url: 'https://github.com/pop9009/simple-java-maven-app.git']]])
+                }
+            }
+        }
         stage("Build") {
             steps{
                 script{
