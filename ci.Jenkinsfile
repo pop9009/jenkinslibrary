@@ -6,8 +6,8 @@ def build = new org.devops.build()
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 
-String srcUrl = "${env.srcUrl}"
-String branchName = $"{env.branchName}"
+String SrcUrl = "${env.SrcUrl}"
+String BranchName = $"{env.BranchName}"
 
 pipeline {
     agent {
@@ -22,7 +22,7 @@ pipeline {
         stage("CheckOut"){
             steps{
                 script{
-                    checkout([$class: 'GitSCM', branches: [[name: "${branchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'global-git-credential', url: "${srcUrl}"]]])
+                    checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'global-git-credential', url: "${SrcUrl}"]]])
                 }
             }
         }
