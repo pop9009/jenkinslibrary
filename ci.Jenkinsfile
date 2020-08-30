@@ -1,4 +1,3 @@
-
 #!groovy
 @Library('jenkinslibrary@master') _
 def mytools = new org.devops.tools()
