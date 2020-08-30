@@ -19,7 +19,13 @@ pipeline {
     }
     
     stages {
-        stage()
+        stage("CheckOut"){
+            steps{
+                script{
+                    checkout([$class: 'GitSCM', branches: [[name: "${branchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'global-git-credential', url: "${srcUrl}"]]])
+                }
+            }
+        }
         stage('GetCode') {
             when {
                 environment name: 'test', value: 'abcd'
