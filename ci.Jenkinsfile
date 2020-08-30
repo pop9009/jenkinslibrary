@@ -34,6 +34,7 @@ pipeline {
         stage("Build") {
             steps{
                 script{
+                    mytools.PrintMes("打包", 'red')
                     build.Build(buildType,buildShell)
                 }
             }
