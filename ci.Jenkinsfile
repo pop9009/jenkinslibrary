@@ -21,7 +21,11 @@ pipeline {
         stage("CheckOut"){
             steps{
                 script{
-                    checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'global-git-credential', url: "${SrcUrl}"]]])
+                    checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
+                                      doGenerateSubmoduleConfigurations: false, 
+                                      extensions: [], 
+                                      submoduleCfg: [], 
+                                      userRemoteConfigs: [[credentialsId: 'gitlab-admin-user', url: "${SrcUrl}"]]])
                 }
             }
         }
