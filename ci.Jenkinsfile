@@ -25,9 +25,9 @@ pipeline {
                                       doGenerateSubmoduleConfigurations: false, 
                                       extensions: [], 
                                       submoduleCfg: [], 
-                                      userRemoteConfigs: [[credentialsId: 'global-git-credential', url: "${SrcUrl}"]]])
-                }*/
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'global-git-credential', url: 'https://github.com/pop9009/simple-java-maven-app.git']]])
+                                      userRemoteConfigs: [[credentialsId: 'global-git-credential', url: "${SrcUrl}"]]])*/
+                      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'global-git-credential', url: 'https://github.com/pop9009/simple-java-maven-app.git']]])
+                }
             }
         }
         stage("Build") {
@@ -43,22 +43,22 @@ pipeline {
             script{
                 println("Always")
                 println("${params.DEPLOY_ENV}")
+                }
             }
-        }
         success {
             script{
                 currentBuild.description = "\n构筑成功"
+                }
             }
-        }
         failure {
             script{
                 currentBuild.description = "\n构筑失败"
+                }
             }
-        }
         aborted {
             script{
                 currentBuild.description = "\n构筑取消"
+                }
             }
-        }
     }
 }
