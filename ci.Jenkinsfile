@@ -21,7 +21,7 @@ pipeline {
          stage("CheckOut"){
             steps{
                 script{
-                    println("${BranchName}")
+                    mytools.PrintMes("获取代码", 'blue')
                     checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
                                       doGenerateSubmoduleConfigurations: false, 
                                       extensions: [], 
