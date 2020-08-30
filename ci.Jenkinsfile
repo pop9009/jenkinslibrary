@@ -21,6 +21,7 @@ pipeline {
         stage("CheckOut"){
             steps{
                 script{
+                      println("${branchName}")
 /*                    checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
                                       doGenerateSubmoduleConfigurations: false, 
                                       extensions: [], 
