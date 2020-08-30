@@ -25,40 +25,15 @@ pipeline {
                 }
             }
         }
-/*        stage('GetCode') {
-            when {
-                environment name: 'test', value: 'abcd'
-            }
-            options {
-                timeout(time: 10, unit: 'MINUTES') 
-            }
-            steps {
-                script{
-                    println("获取代码")
-                    mytools.PrintMes("获取代码", 'red')
-                }
-            }
-        }
         stage("Build") {
             steps{
                 script{
                     build.Build(buildType,buildShell)
                 }
             }
-        }
-        stage('CodeScan') {
-            options {
-                timeout(time: 30, unit: 'MINUTES') 
-            }
-            steps {
-                script{
-                    println("代码扫描")
-                    mytools.PrintMes("代码扫描", 'blue')
-                }
-            }
-        }*/        
+        }      
     }
-  /*  post{
+    post{
         always {
             script{
                 println("Always")
@@ -79,6 +54,6 @@ pipeline {
             script{
                 currentBuild.description = "\n构筑取消"
             }
-        }*/
+        }
     }
 }
