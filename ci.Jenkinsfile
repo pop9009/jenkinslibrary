@@ -5,19 +5,21 @@ def mytools = new org.devops.tools()
 def build = new org.devops.build()
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
-hello()
+
+String srcUrl = "${env.srcUrl}"
+String branchName = $"{env.branchName}"
 
 pipeline {
     agent {
         node {label "master"}
     }
-    parameters { string(name: 'DEPLOY_ENV', defaultValue: 'dev', description: '') }
     options {
         timestamps()
         timeout(time: 1, unit: "HOURS")
     }
     
     stages {
+        stage()
         stage('GetCode') {
             when {
                 environment name: 'test', value: 'abcd'
