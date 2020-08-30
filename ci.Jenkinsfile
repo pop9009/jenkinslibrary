@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-        stage('GetCode') {
+/*        stage('GetCode') {
             when {
                 environment name: 'test', value: 'abcd'
             }
@@ -57,9 +57,9 @@ pipeline {
                     mytools.PrintMes("代码扫描", 'blue')
                 }
             }
-        }        
+        }*/        
     }
-    post{
+  /*  post{
         always {
             script{
                 println("Always")
@@ -80,6 +80,6 @@ pipeline {
             script{
                 currentBuild.description = "\n构筑取消"
             }
-        }
+        }*/
     }
 }
