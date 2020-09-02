@@ -22,6 +22,10 @@ pipeline {
             steps{
                 script{
                     mytools.PrintMes("获取代码", 'blue')
+                    if("${runOpts}" == "GitlabPush"){
+                        branch = branch-"refs/heads/"
+                    }
+                    println("${branch}")
                     checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
                                       doGenerateSubmoduleConfigurations: false, 
                                       extensions: [], 
