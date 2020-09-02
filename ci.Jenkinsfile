@@ -6,7 +6,7 @@ String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 
 String SrcUrl = "${env.SrcUrl}"
-String BranchName = "${env.BranchName}"
+String BranchName = ""
 
 pipeline {
     agent {
@@ -23,7 +23,7 @@ pipeline {
                 script{
                     mytools.PrintMes("获取代码", 'blue')
                     if("${runOpts}" == "GitlabPush"){
-                        branch = branch-"refs/heads/"
+                        BranchName = branch-"refs/heads/"
                     }
                     println("${branch}")
                     checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
