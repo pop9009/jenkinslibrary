@@ -47,4 +47,31 @@ pipeline {
             }
         }      
     }
+    post {
+        always{
+            script{
+                println("always")
+            }
+        }
+        
+        success{
+            script{
+                println("success")
+                gitlab.ChangeCommitStatus(projectId,commitSha,"success")                
+            }    
+        }
+        failure{
+            script{
+                println("failure")
+                gitlab.ChangeCommitStatus(projectId,commitSha,"failed")               
+            }
+        }
+        
+        aborted{
+            script{
+                println("aborted")
+                gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
+            }        
+        }    
+    }
 }
