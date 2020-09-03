@@ -2,6 +2,8 @@
 @Library('jenkinslibrary@master') _
 def mytools = new org.devops.tools()
 def build = new org.devops.build()
+def gitlab = new org.devops.gitlab()
+
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 
@@ -24,6 +26,7 @@ pipeline {
                     mytools.PrintMes("获取代码", 'blue')
                     if("${runOpts}" == "GitlabPush"){
                         BranchName = branch-"refs/heads/"
+                        gitlab.ChangeCommitStatus(projectId,commitSha,"running")
                     }
                     println("${branch}")
                     checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
