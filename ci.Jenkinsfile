@@ -27,7 +27,7 @@ pipeline {
                         BranchName = branch-"refs/heads/"
                         gitlab.ChangeCommitStatus(projectId,commitSha,"running")
                     }
-                    println("${branch}")
+                    println("${BranchName}")
                     checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
                                       doGenerateSubmoduleConfigurations: false, 
                                       extensions: [], 
