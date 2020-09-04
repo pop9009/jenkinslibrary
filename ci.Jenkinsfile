@@ -24,7 +24,7 @@ pipeline {
                 script{
                     mytools.PrintMes("获取代码", 'blue')
                     if("${runOpts}" == "GitlabPush"){
-                        BranchName = branch-"refs/heads/"
+                        env.BranchName = branch-"refs/heads/"
                         gitlab.ChangeCommitStatus(projectId,commitSha,"running")
                     }
                     println("${BranchName}")
