@@ -8,7 +8,6 @@ String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 
 String SrcUrl = "${env.SrcUrl}"
-String BranchName = "${env.BranchName}"
 
 pipeline {
     agent {
