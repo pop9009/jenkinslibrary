@@ -3,6 +3,7 @@
 def mytools = new org.devops.tools()
 def build = new org.devops.build()
 def gitlab = new org.devops.gitlab()
+def sonar = new org.devops.sonarqube()
 
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
@@ -44,7 +45,15 @@ pipeline {
                     build.Build(buildType,buildShell)
                 }
             }
-        }      
+        } 
+        stage("QA"){
+            steps{
+                script{
+                    mytools.PrintMes("代码扫描", 'green')
+                    sonar.SonarScan("${JOB_NAME}","${JOB_NAME}","src")
+                }
+            }
+        }
     }
     post {
         always{
