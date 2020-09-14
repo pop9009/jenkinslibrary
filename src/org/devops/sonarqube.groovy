@@ -1,11 +1,11 @@
 package org.devops
 
 def SonarScan(projectName,projectDesc,projectPath){
-  def scannerHome= "/usr/local/sonar-scanner-4.4.0.2170-linux/"
+  withSonarQubeEnv("sonarqube-test"){
+    def scannerHome= "/usr/local/sonar-scanner-4.4.0.2170-linux/"
 //  def sonarServer= "http://172.100.25.65:9000"
-  def sonarDate= sh returnStdout: true, script: 'date +%Y%m%d%H%S'
-  sonarDate = sonarDate -"\n"
-  withSonarQubeEnv("sonar"){
+    def sonarDate= sh returnStdout: true, script: 'date +%Y%m%d%H%S'
+    sonarDate = sonarDate -"\n"
       sh"""
       ${scannerHome}/bin/sonar-scanner-Dsonar.projectKey=${projectName} \
       -Dsonar.projectName=${projectName} \
