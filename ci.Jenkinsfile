@@ -5,6 +5,8 @@ def build = new org.devops.build()
 def gitlab = new org.devops.gitlab()
 def sonar = new org.devops.sonarqube()
 
+def runOpts
+    
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 
@@ -65,20 +67,26 @@ pipeline {
         success{
             script{
                 println("success")
-                gitlab.ChangeCommitStatus(projectId,commitSha,"success")                
+                if("${runOpts}" == "GitlabPush"){
+                    gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
+                }              
             }    
         }
         failure{
             script{
                 println("failure")
-                gitlab.ChangeCommitStatus(projectId,commitSha,"failed")               
+                if("${runOpts}" == "GitlabPush"){
+                    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")   
+                }            
             }
         }
         
         aborted{
             script{
                 println("aborted")
-                gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
+                if("${runOpts}" == "GitlabPush"){
+                    gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
+                }
             }        
         }    
     }
