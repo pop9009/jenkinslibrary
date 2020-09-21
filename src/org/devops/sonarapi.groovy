@@ -24,6 +24,7 @@ def GetProjectStatus(projectName){
     return result
 }
 
+//搜索Sonar项目
 def SearchProject(projectName){
     apiUrl = "projects/search?projects=${projectName}"
     response = HttpReq("GET",apiUrl,'')
@@ -34,4 +35,11 @@ def SearchProject(projectName){
     }else{
         return "true"
     }
+}
+
+//创建Sonar项目
+def CreateProject(projectName){
+    apiUrl = "projects/create?name=${projectName}&project=${projectName}"
+    response = HttpReq("POST",apiUrl,'')
+    println(response)
 }
