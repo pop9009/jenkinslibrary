@@ -60,7 +60,7 @@ pipeline {
                     }else{
                         println("项目已存在！")
                     }
-                    mytools.PrintMes("代码扫描", 'green')
+                    /*mytools.PrintMes("代码扫描", 'green')
                     sonar.SonarScan("${JOB_NAME}","${JOB_NAME}","src")
                     mytools.PrintMes("获取扫描结果", 'green')
                     sleep 10
@@ -69,7 +69,7 @@ pipeline {
                         error " 代码质量阈错误！请及时修复！" 
                     }else{
                         println(result)
-                    }
+                    }*/
                 }
             }
         }
