@@ -58,7 +58,7 @@ pipeline {
                     mytools.PrintMes("获取扫描结果", 'green')
                     sleep 10
                     result = sonarapi.GetProjectStatus("${JOB_NAME}")
-                    if(result.toString == "ERROR"){
+                    if(result.toString() == "ERROR"){
                         error " 代码质量阈错误！请及时修复！" 
                     }else{
                         println(result)
