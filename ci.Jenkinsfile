@@ -4,6 +4,7 @@ def mytools = new org.devops.tools()
 def build = new org.devops.build()
 def gitlab = new org.devops.gitlab()
 def sonar = new org.devops.sonarqube()
+def sonarapi = new org.devops.sonarapi()
 
 def runOpts
     
@@ -54,6 +55,14 @@ pipeline {
                 script{
                     mytools.PrintMes("代码扫描", 'green')
                     sonar.SonarScan("${JOB_NAME}","${JOB_NAME}","src")
+                    mytools.PrintMes("获取扫描结果", 'green')
+                    result = sonarapi.getProjectStatus("${JOB_NAME}")
+                    sleep 10
+                    if(result.toString == "ERROR"){
+                        error " 代码质量阈错误！请及时修复！" 
+                    }else{
+                        println(result)
+                    }
                 }
             }
         }
