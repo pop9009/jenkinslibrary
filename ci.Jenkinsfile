@@ -9,6 +9,7 @@ def runOpts
     
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
+String BranchName = "${env.branchName}"
 
 String SrcUrl = "${env.SrcUrl}"
 
