@@ -68,7 +68,7 @@ pipeline {
                     sonarapi.ConfigQualityProfiles("${JOB_NAME}","java",qpName)
                     mytools.PrintMes("配置质量阈",'green')
                     sonarapi.ConfigQualityGates("${JOB_NAME}",qpName)
-                    /*mytools.PrintMes("代码扫描", 'green')
+                    mytools.PrintMes("代码扫描", 'green')
                     sonar.SonarScan("${JOB_NAME}","${JOB_NAME}","src")
                     mytools.PrintMes("获取扫描结果", 'green')
                     sleep 10
@@ -77,7 +77,7 @@ pipeline {
                         error " 代码质量阈错误！请及时修复！" 
                     }else{
                         println(result)
-                    }*/
+                    }
                 }
             }
         }
