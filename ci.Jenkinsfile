@@ -62,8 +62,8 @@ pipeline {
                         println("项目已存在！")
                     }
                     mytools.PrintMes("配置项目质量规则",'green')
-                    qpName="${JOB_NAME}".split("-")[0]
-//                    qpName='Sonar%20way'
+                    //qpName="${JOB_NAME}".split("-")[0]
+                    qpName='Sonar%20way'
                     println(qpName)
                     sonarapi.ConfigQualityProfiles("${JOB_NAME}","java",qpName)
                     mytools.PrintMes("配置质量阈",'green')
