@@ -63,6 +63,7 @@ pipeline {
                     }
                     tools.PrintMes("配置项目质量规则","green")
                     qpName="${JOB_NAME}".split("-")[0]
+                    println(qpName)
                     sonarapi.ConfigQualityProfiles("${JOB_NAME}","java",qpName)
                     /*mytools.PrintMes("代码扫描", 'green')
                     sonar.SonarScan("${JOB_NAME}","${JOB_NAME}","src")
