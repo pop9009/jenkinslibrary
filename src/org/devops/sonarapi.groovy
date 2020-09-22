@@ -46,7 +46,7 @@ def CreateProject(projectName){
 
 //配置项目质量阈
 def ConfigQualityProfiles(projectName,lang,qpname){
-    apiUrl = "qualityprofiles/add_project?language=${lang}&project=${projectName}&qualityProfile={qpname}"
+    apiUrl = "qualityprofiles/add_project?language=${lang}&project=${projectName}&qualityProfile=${qpname}"
     response = HttpReq("POST",apiUrl,'')
     println(response)
 }
