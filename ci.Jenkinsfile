@@ -61,7 +61,7 @@ pipeline {
                     }else{
                         println("项目已存在！")
                     }
-                    tools.PrintMes("配置项目质量规则","green")
+                    mytools.PrintMes("配置项目质量规则",'green')
                     qpName="${JOB_NAME}".split("-")[0]
                     println(qpName)
                     sonarapi.ConfigQualityProfiles("${JOB_NAME}","java",qpName)
