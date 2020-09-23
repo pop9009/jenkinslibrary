@@ -14,6 +14,12 @@ String BranchName = "${env.branchName}"
 
 String SrcUrl = "${env.SrcUrl}"
 
+if("${runOpts}" == "GitlabPush"){
+    env.BranchName = branch-"refs/heads/"
+    gitlab.ChangeCommitStatus(projectId,commitSha,"running")
+    env.runOpts = "GitlabPush"
+}
+
 pipeline {
     agent {
         node {label "master"}
@@ -28,10 +34,6 @@ pipeline {
             steps{
                 script{
                     mytools.PrintMes("获取代码", 'blue')
-                    if("${runOpts}" == "GitlabPush"){
-                        env.BranchName = branch-"refs/heads/"
-                        gitlab.ChangeCommitStatus(projectId,commitSha,"running")
-                    }
                     println("${BranchName}")
                     checkout([$class: 'GitSCM', branches: [[name: "${BranchName}"]], 
                                       doGenerateSubmoduleConfigurations: false, 
