@@ -7,12 +7,9 @@ def SonarScan(projectName,projectDesc,projectPath){
     def sonarDate= sh returnStdout: true, script: 'date +%Y%m%d%H%S'
     sonarDate = sonarDate -"\n"
     sh"""
-        #${scannerHome}/bin/sonar-scanner -Dsonar.host.url=${sonarServer} \
         ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${projectName} \
         -Dsonar.projectName=${projectName} \
         -Dsonar.projectVersion=${sonarDate} \
-        -Dsonar.login=admin \
-        -Dsonar.password=admin \
         -Dsonar.ws.timeout=30 \
         -Dsonar.projectDescription=${projectDesc} \
         -Dsonar.links.homepage=http://www.baidu.com \
