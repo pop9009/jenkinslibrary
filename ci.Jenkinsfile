@@ -95,7 +95,7 @@ pipeline {
                 mytools.PrintMes("构建结束", 'green')
                 println("success")
                 if("${env.runOpts}" == "GitlabPush"){
-//                println("runOpts: ${env.runOpts}")
+                   println("runOpts: ${env.runOpts}")
                    gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
               }              
             }    
