@@ -92,6 +92,7 @@ pipeline {
         
         success{
             script{
+                mytools.PrintMes("构建结束", 'green')
                 println("success")
 //                if("${runOpts}" == "GitlabPush"){
                 println("${runOpts}")
