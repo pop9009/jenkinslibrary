@@ -96,8 +96,8 @@ pipeline {
                 println("success")
 //                if("${env.runOpts}" == "GitlabPush"){
                 println("runOpts: ${env.runOpts}")
-//                   gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
-              }              
+                   gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
+//              }              
             }    
         }
         failure{
