@@ -93,9 +93,9 @@ pipeline {
         success{
             script{
                 println("success")
-//                if("${runOpts}" == "GitlabPush"){
+                if("${runOpts}" == "GitlabPush"){
                     gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
-//              }              
+              }              
             }    
         }
         failure{
