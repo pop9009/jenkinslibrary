@@ -11,11 +11,10 @@ def runOpts
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 String BranchName = "${env.branchName}"
-
 String SrcUrl = "${env.SrcUrl}"
 
 if("${runOpts}" == "GitlabPush"){
-    env.BranchName = branch-"refs/heads/"
+    BranchName = branch-"refs/heads/"
     gitlab.ChangeCommitStatus(projectId,commitSha,"running")
     env.runOpts = "GitlabPush"
 }
