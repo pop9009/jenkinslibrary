@@ -95,7 +95,7 @@ pipeline {
                 mytools.PrintMes("构建结束", 'green')
                 println("success")
                 if("${env.runOpts}" == "GitlabPush"){
-                   println("runOpts: ${env.runOpts}")
+ //                  println("runOpts: ${env.runOpts}")
                    gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
               }              
             }    
@@ -103,7 +103,7 @@ pipeline {
         failure{
             script{
                 println("failure")
-                if("${runOpts}" == "GitlabPush"){
+                if("${env.runOpts}" == "GitlabPush"){
                     gitlab.ChangeCommitStatus(projectId,commitSha,"failed")   
                 }            
             }
@@ -112,7 +112,7 @@ pipeline {
         aborted{
             script{
                 println("aborted")
-                if("${runOpts}" == "GitlabPush"){
+                if("${env.runOpts}" == "GitlabPush"){
                     gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
                 }
             }        
