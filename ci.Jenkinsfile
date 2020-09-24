@@ -6,7 +6,7 @@ def gitlab = new org.devops.gitlab()
 def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarapi()
 
-def runOpts
+def runOpts = " "
     
 String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
@@ -94,9 +94,9 @@ pipeline {
             script{
                 mytools.PrintMes("构建结束", 'green')
                 println("success")
-                if("${env.runOpts}" == "GitlabPush"){
-                //println("runOpts: ${env.runOpts}")
-                    gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
+//                if("${env.runOpts}" == "GitlabPush"){
+                println("runOpts: ${env.runOpts}")
+//                   gitlab.ChangeCommitStatus(projectId,commitSha,"success")  
               }              
             }    
         }
