@@ -46,7 +46,7 @@ pipeline {
         stage("Build") {
             steps{
                 script{
-                    mytools.PrintMes("打包", 'red')
+                    mytools.PrintMes("打包", 'blue')
                     build.Build(buildType,buildShell)
                 }
             }
