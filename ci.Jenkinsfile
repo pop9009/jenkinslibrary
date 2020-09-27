@@ -58,7 +58,7 @@ pipeline {
                     pomPackaging = "${pom.packaging}"
                     println("${pomGroupId}-${pomArtifact}-${pomVersion}-${pomPackaging}")
                     
-                    def mvnHome = tool "M2"
+                    /*def mvnHome = tool "M2"
                     sh  """ 
                         cd target/
                         ${mvnHome}/bin/mvn deploy:deploy-file -Dmaven.test.skip=true  \
@@ -66,7 +66,20 @@ pipeline {
                             -DartifactId=${pomArtifact} -Dversion=${pomVersion}  \
                             -Dpackaging=${pomPackaging} -DrepositoryId=maven-snapshots \
                             -Durl=http://172.100.25.65:8081/repository/maven-snapshots 
-                        """
+                        """*/
+                    def filepath = "target/${jarName}"
+                    def repoName = "maven-snapshots"
+                    nexusArtifactUploader artifacts: [[artifactId: "${pom.artifactId}",
+                                                       classifier: '',
+                                                       file: "${filepath}",
+                                                       type: "${pomPackaging}"]],
+                                                       credentialsId: 'nexus-credential',
+                                                       groupId: "${pomGroupId}",
+                                                       nexusUrl: '172.100.25.65:8081',
+                                                       nexusVersion: 'nexus3',
+                                                       protocol: 'http',
+                                                       repository: "${repoName}",
+                                                       version: "pomVersion"
                 }
             }
         } 
