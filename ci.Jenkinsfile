@@ -69,7 +69,7 @@ pipeline {
                         """*/
                     def filepath = "target/${jarName}"
                     def repoName = "maven-snapshots"
-                    nexusArtifactUploader artifacts: [[artifactId: "${pom.artifactId}",
+                    nexusArtifactUploader artifacts: [[artifactId: "${pomArtifact}",
                                                        classifier: '',
                                                        file: "${filepath}",
                                                        type: "${pomPackaging}"]],
@@ -79,7 +79,7 @@ pipeline {
                                                        nexusVersion: 'nexus3',
                                                        protocol: 'http',
                                                        repository: "${repoName}",
-                                                       version: "pomVersion"
+                                                       version: "${pomVersion}"
                 }
             }
         } 
