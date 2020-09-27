@@ -57,6 +57,9 @@ pipeline {
                     pomVersion = "${pom.version}"
                     pomPackaging = "${pom.packaging}"
                     println("${pomGroupId}-${pomArtifact}-${pomVersion}-${pomPackaging}")
+                    
+                    def mvnHome = tool "M2"
+                    println("${mvnHome}")
                 }
             }
         } 
