@@ -59,7 +59,14 @@ pipeline {
                     println("${pomGroupId}-${pomArtifact}-${pomVersion}-${pomPackaging}")
                     
                     def mvnHome = tool "M2"
-                    println("${mvnHome}")
+                    sh  """ 
+                        cd target/
+                        ${mvnHome}/bin/mvn deploy:deploy-file -Dmaven.test.skip=true  \
+                            -Dfile=${jarName} -DgroupId=${pomGroupId} \
+                            -DartifactId=${pomArtifact} -Dversion=${pomVersion}  \
+                            -Dpackaging=${pomPackaging} -DrepositoryId=maven-snapshots \
+                            -Durl=http://172.100.25.65:8081/repository/maven-snapshots 
+                        """
                 }
             }
         } 
