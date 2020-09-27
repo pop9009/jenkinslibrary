@@ -51,12 +51,13 @@ pipeline {
                     
                     def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
                     jarName = jarName - "\n"
-                    println("${jarName}")
+                    
                     def pom = readMavenPom file 'pom.xml'
-                    def pomVersion = "${pom.version}"
-                    def pomArtifact = "${pom.artifactId}"
-                    def pomPackaging = "${pom.packaging}"
-                    def pomGroupId = "${pom.groupId}"
+                        pomVersion = "${pom.version}"
+                        pomArtifact = "${pom.artifactId}"
+                        pomPackaging = "${pom.packaging}"
+                        pomGroupId = "${pom.groupId}"
+                    
                     println("${pomGroupId}-${pomArtifact}-${pomVersion}-${pomPackaging}")
                 }
             }
