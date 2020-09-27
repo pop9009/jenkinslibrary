@@ -49,10 +49,10 @@ pipeline {
                     mytools.PrintMes("打包", 'blue')
                     build.Build(buildType,buildShell)
                     
-                    def jarName = sh returnStdout:true,script:"cd target;ls *.jar"
+                    def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
                     jarName = jarName - "\n"
-                    
-                    def pom = readMavenPom file "pom.xml"
+                    println("${jarName}")
+                    def pom = readMavenPom file 'pom.xml'
                     def pomVersion = "${pom.version}"
                     def pomArtifact = "${pom.artifactId}"
                     def pomPackaging = "${pom.packaging}"
