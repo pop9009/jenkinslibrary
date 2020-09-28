@@ -40,7 +40,7 @@ def main(UploadType){
    GetGav()
    if("${UploadType}" == "Maven"){
       MavenUpload()
-   }else if("${UploadType}" == "Nexus"){
+   }else if ("${UploadType}" == "Nexus"){
       NexusUpload()
    }
-｝
+}
