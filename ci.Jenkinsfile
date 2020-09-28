@@ -5,7 +5,7 @@ def build = new org.devops.build()
 def gitlab = new org.devops.gitlab()
 def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarapi()
-
+def nexus = new org.devops.nexus()
 def runOpts = " "
     
 String BuildShell = "${env.BuildShell}"
@@ -48,8 +48,8 @@ pipeline {
                 script{
                     mytools.PrintMes("打包", 'blue')
                     build.Build(buildType,buildShell)
-                    
-                    def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
+                    nexus.main("Maven")
+                    /*def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
                     jarName = jarName - "\n"
                     def pom = readMavenPom file: "pom.xml"
                     pomGroupId = "${pom.groupId}"
@@ -58,7 +58,7 @@ pipeline {
                     pomPackaging = "${pom.packaging}"
                     println("${pomGroupId}-${pomArtifact}-${pomVersion}-${pomPackaging}")
                     
-                    /*def mvnHome = tool "M2"
+                    def mvnHome = tool "M2"
                     sh  """ 
                         cd target/
                         ${mvnHome}/bin/mvn deploy:deploy-file -Dmaven.test.skip=true  \
@@ -66,7 +66,7 @@ pipeline {
                             -DartifactId=${pomArtifact} -Dversion=${pomVersion}  \
                             -Dpackaging=${pomPackaging} -DrepositoryId=maven-snapshots \
                             -Durl=http://172.100.25.65:8081/repository/maven-snapshots 
-                        """*/
+                        """
                     def filepath = "target/${jarName}"
                     def repoName = "maven-snapshots"
                     nexusArtifactUploader artifacts: [[artifactId: "${pomArtifact}",
@@ -79,7 +79,7 @@ pipeline {
                                                        nexusVersion: 'nexus3',
                                                        protocol: 'http',
                                                        repository: "${repoName}",
-                                                       version: "${pomVersion}"
+                                                       version: "${pomVersion}"*/
                 }
             }
         } 
