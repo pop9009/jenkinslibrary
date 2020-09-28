@@ -34,7 +34,7 @@ def NexusUpload(){
                                        nexusVersion: 'nexus3',
                                        protocol: 'http',
                                        repository: "${repoName}",
-                                       version: "${pomVersion}
+                                       version: "${pomVersion}"
 }
 def main(UploadType){
    GetGav()
