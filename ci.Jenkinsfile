@@ -48,7 +48,7 @@ pipeline {
                 script{
                     mytools.PrintMes("打包", 'blue')
                     build.Build(buildType,buildShell)
-                    nexus.main("Maven")
+                    nexus.main("Nexus")
                     /*def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
                     jarName = jarName - "\n"
                     def pom = readMavenPom file: "pom.xml"
