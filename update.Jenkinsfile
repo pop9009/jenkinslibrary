@@ -9,8 +9,10 @@ pipeline{
     }
   stages{
     stage("UpdateArtifact"){
-      script{
-        nexus.ArtifactUpdate(updateType,artifactUrl)
+      steps{
+        script{
+          nexus.ArtifactUpdate(updateType,artifactUrl)
+        }
       }
     }
   }
