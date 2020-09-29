@@ -62,7 +62,7 @@ def ArtifactUpdate(updateType,artifactUrl){
         
         //更改名称
         sh " cd updates && mv ${jarName} ${newJarName} "
-        prtintln("显示当前路径")
+        println("显示当前路径")
         sh "pwd"
         println("显示jar包")
         sh "ls"
