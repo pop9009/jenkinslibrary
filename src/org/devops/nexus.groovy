@@ -61,11 +61,7 @@ def ArtifactUpdate(updateType,artifactUrl){
         env.newJarName = "${pomArtifact}-${pomVersion}.${pomPackaging}"
         
         //更改名称
-        sh " cd updates && mv ${jarName} ${newJarName} "
-        println("显示当前路径")
-        sh "pwd"
-        println("显示jar包")
-        sh "ls"
+        sh " cd updates && mv ${jarName} ${newJarName} && pwd && ls "
         
         //上传制品
         env.repoName = "maven-releases"
