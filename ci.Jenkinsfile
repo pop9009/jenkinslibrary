@@ -53,37 +53,6 @@ pipeline {
                     nexus.main("Nexus")
                     //下载制品
                     //sh "wget ${ArtifactUrl} && ls "
-                    /*def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
-                    jarName = jarName - "\n"
-                    def pom = readMavenPom file: "pom.xml"
-                    pomGroupId = "${pom.groupId}"
-                    pomArtifact = "${pom.artifactId}"
-                    pomVersion = "${pom.version}"
-                    pomPackaging = "${pom.packaging}"
-                    println("${pomGroupId}-${pomArtifact}-${pomVersion}-${pomPackaging}")
-                    
-                    def mvnHome = tool "M2"
-                    sh  """ 
-                        cd target/
-                        ${mvnHome}/bin/mvn deploy:deploy-file -Dmaven.test.skip=true  \
-                            -Dfile=${jarName} -DgroupId=${pomGroupId} \
-                            -DartifactId=${pomArtifact} -Dversion=${pomVersion}  \
-                            -Dpackaging=${pomPackaging} -DrepositoryId=maven-snapshots \
-                            -Durl=http://172.100.25.65:8081/repository/maven-snapshots 
-                        """
-                    def filepath = "target/${jarName}"
-                    def repoName = "maven-snapshots"
-                    nexusArtifactUploader artifacts: [[artifactId: "${pomArtifact}",
-                                                       classifier: '',
-                                                       file: "${filepath}",
-                                                       type: "${pomPackaging}"]],
-                                                       credentialsId: 'nexus-credential',
-                                                       groupId: "${pomGroupId}",
-                                                       nexusUrl: '172.100.25.65:8081',
-                                                       nexusVersion: 'nexus3',
-                                                       protocol: 'http',
-                                                       repository: "${repoName}",
-                                                       version: "${pomVersion}"*/
                 }
             }
         } 
