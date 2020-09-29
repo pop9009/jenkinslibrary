@@ -12,6 +12,7 @@ String BuildShell = "${env.BuildShell}"
 String BuildType = "${env.BuildType}"
 String BranchName = "${env.branchName}"
 String SrcUrl = "${env.SrcUrl}"
+String ArtifactUrl = "${env.artifactUrl}"
 
 if("${runOpts}" == "GitlabPush"){
     BranchName = branch-"refs/heads/"
@@ -48,7 +49,10 @@ pipeline {
                 script{
                     mytools.PrintMes("打包", 'blue')
                     build.Build(buildType,buildShell)
+                    //上传制品
                     nexus.main("Nexus")
+                    //下载制品
+                    sh "wget ${ArtifactUrl} && ls "
                     /*def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
                     jarName = jarName - "\n"
                     def pom = readMavenPom file: "pom.xml"
