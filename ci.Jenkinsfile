@@ -52,7 +52,7 @@ pipeline {
                     //上传制品
                     nexus.main("Nexus")
                     //下载制品
-                    sh "wget ${ArtifactUrl} && ls "
+                    //sh "wget ${ArtifactUrl} && ls "
                     /*def jarName = sh returnStdout:true, script:"cd target;ls *.jar"
                     jarName = jarName - "\n"
                     def pom = readMavenPom file: "pom.xml"
