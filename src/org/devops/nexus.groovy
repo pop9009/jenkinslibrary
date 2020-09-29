@@ -68,7 +68,7 @@ def ArtifactUpdate(updateType,artifactUrl){
         sh "ls"
         
         //上传制品
-        env.repoName = "maven-release"
+        env.repoName = "maven-releases"
         env.filePath = "updates/${newJarName}"
         NexusUpload()
     }
