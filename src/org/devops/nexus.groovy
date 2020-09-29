@@ -22,8 +22,6 @@ def MavenUpload(){
          """
 }
 def NexusUpload(){
-    def filepath = "target/${jarName}"
-    def repoName = "maven-snapshots"
     nexusArtifactUploader artifacts: [[artifactId: "${pomArtifact}",
                                        classifier: '',
                                        file: "${filepath}",
@@ -41,6 +39,8 @@ def main(UploadType){
    if("${UploadType}" == "Maven"){
       MavenUpload()
    }else if ("${UploadType}" == "Nexus"){
+      env.filepath = "target/${jarName}"
+      env.repoName = "maven-snapshots"
       NexusUpload()
    }
 }
