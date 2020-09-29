@@ -62,6 +62,8 @@ def ArtifactUpdate(updateType,artifactUrl){
         
         //更改名称
         sh " cd updates && mv ${jarName} ${newJarName} "
+        println("显示jar包")
+        sh "ls"
         
         //上传制品
         env.repoName = "maven-release"
