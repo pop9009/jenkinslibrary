@@ -29,9 +29,9 @@ def GetComponentsId(repoName,groupId,artifactId,version){
     for(component in result){
         if(component["group"] == groupId && component["name"] == artifactId && component["version"] == version){
             componentId = component["id"]
+            println("获取制品ID")
+            println(componentId)
             return componentId
         }
     }
-    println("获取制品ID")
-    println(componentId)
 }
