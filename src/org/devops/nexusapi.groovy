@@ -23,3 +23,14 @@ def GetRepoComponents(repoName){
     println(response["items"].size())
     return response["items"]
 }
+
+def GetComponentsId(repoName,groupId,artifactId,version){
+    result = GetRepoComponents(repoName)
+    for(component in result){
+        if(component["group"] == groupId && component["name"] == artifactId && component["version"] == version){
+            componentId = component["id"]
+            return componentId
+        }
+    }
+    println(componentId)
+}
