@@ -11,6 +11,7 @@ pipeline{
     stage("UpdateArtifact"){
       steps{
         script{
+          //更改制品
           nexus.ArtifactUpdate(updateType,artifactUrl)
         }
       }
