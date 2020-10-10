@@ -2,6 +2,7 @@
 @Library('jenkinslibrary@master') _
 
 def nexus = new org.devops.nexus()
+def nexusapi = new org.devops.nexusapi()
 
 pipeline{
   agent{
@@ -12,7 +13,9 @@ pipeline{
       steps{
         script{
           //更改制品
-          nexus.ArtifactUpdate(updateType,artifactUrl)
+          //nexus.ArtifactUpdate(updateType,artifactUrl)
+          
+          nexusapi.GetRepoComponents("maven-public")
         }
       }
     }
