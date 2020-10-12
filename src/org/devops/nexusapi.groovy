@@ -24,14 +24,24 @@ def GetRepoComponents(repoName){
     return response["items"]
 }
 
+//获取仓库中组件ID
 def GetComponentsId(repoName,groupId,artifactId,version){
     result = GetRepoComponents(repoName)
     for(component in result){
         if(component["group"] == groupId && component["name"] == artifactId && component["version"] == version){
             componentId = component["id"]
-            println("获取制品ID")
-            println(componentId)
+//            println("获取制品ID")
+//            println(componentId)
             return componentId
         }
-    }
+    }    
+}
+
+def GetSingleComponent(repoName,groupId,artifactId,version){
+    componentId = GetComponentsId(repoName,groupId,artifactId,version)
+    apiUrl =  "/v1/components/${componentId}"
+    response = HttpReq("GET",apiUrl,'')
+    response = readJSON text: """${response.content}"""
+    println("组件下载地址")
+    println(response["assets"][downloadUrl])
 }
