@@ -16,7 +16,8 @@ pipeline{
           //nexus.ArtifactUpdate(updateType,artifactUrl)
           
           //nexusapi.GetRepoComponents("maven-public")
-          nexusapi.GetComponentsId("maven-public","com.mycompany.app","my-app","1.1-RELEASE")
+          //nexusapi.GetComponentsId("maven-public","com.mycompany.app","my-app","1.1-RELEASE")
+          nexusapi.GetSingleComponent("maven-public","com.mycompany.app","my-app","1.1-RELEASE")
         }
       }
     }
