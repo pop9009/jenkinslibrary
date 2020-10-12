@@ -4,6 +4,8 @@
 def nexus = new org.devops.nexus()
 def nexusapi = new org.devops.nexusapi()
 
+String pkgVersion = "${env.pkgVersion}"
+
 pipeline{
   agent{
     node {label "master"}
@@ -17,7 +19,7 @@ pipeline{
           
           //nexusapi.GetRepoComponents("maven-public")
           //nexusapi.GetComponentsId("maven-public","com.mycompany.app","my-app","1.1-RELEASE")
-          nexusapi.GetSingleComponent("maven-public","com.mycompany.app","my-app","1.1-RELEASE")
+          nexusapi.GetSingleComponent("maven-public","com.mycompany.app","my-app",pkgVersion)
         }
       }
     }
