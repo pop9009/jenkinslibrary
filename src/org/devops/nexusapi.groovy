@@ -43,5 +43,5 @@ def GetSingleComponent(repoName,groupId,artifactId,version){
     response = HttpReq("GET",apiUrl,'')
     response = readJSON text: """${response.content}"""
     println("组件下载地址")
-    println(response["assets"]["downloadUrl"])
+    println(response["assets"]["downloadUrl"][0])
 }
